@@ -9,7 +9,7 @@ import (
 )
 
 func ApiV1Url(path string) string {
-	return "/api/v1/" + path
+	return "/api/v1" + path
 }
 
 func GoldenPath(t *testing.T) string {

@@ -1,17 +1,21 @@
 package handler
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 type User struct {
+	gorm.Model
 	Name        string `json:"name"`
 	Email       string `json:"email"`
 	PhoneNumber string `json:"phone_number"`
 }
 
-const userIndex = "/users"
+const users = "/users"
+const userIndex = users
 
 func UserIndex() gin.HandlerFunc {
 	users := []User{{

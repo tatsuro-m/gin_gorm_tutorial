@@ -19,6 +19,8 @@ services:
       target: dev
     tty: true
     stdin_open: true
+    environment:
+      MAIN_DSN: "host=db user=postgres password=password dbname=app_dev port=5432 sslmode=disable"
     volumes:
       - .:/go/src/app
     ports:

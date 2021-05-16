@@ -1,6 +1,7 @@
 FROM golang:1.16.3-alpine3.13 as dev
 
 ENV ROOT=/go/src/app
+ENV CGO_ENABLED 0
 WORKDIR ${ROOT}
 
 RUN apk update && apk add git

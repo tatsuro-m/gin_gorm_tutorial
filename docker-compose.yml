@@ -8,6 +8,8 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+    ports:
+      - 5432:5432
 
   web:
     build:
@@ -22,3 +24,18 @@ services:
       - 8080:8080
     depends_on:
       - db
+      - migration
+
+  migration:
+    build:
+      context: .
+      dockerfile: migration.dockerfile
+    tty: true
+    stdin_open: true
+    environment:
+      POSTGRES_URL: postgres://postgres:password@db:5432/postgres?sslmode=disable
+    volumes:
+      - .:/go/src/app
+    depends_on:
+      - db
+
